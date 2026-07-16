@@ -20,13 +20,13 @@ export default function Home() {
                 Portfolio
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400">ทรงพล พุ่มนุช</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-teal-200">ทรงพล พุ่มนุช</span>
               </h1>
 
               <div className="mt-6 space-y-3">
                 <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">UX/UI Designer & Frontend Developer</h2>
                 <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
-                  กำลังศึกษาและพัฒนาเว็บไซต์อย่างต่อเนื่อง โดยให้ความสำคัญกับ UX/UI 
+                  กำลังศึกษาและพัฒนาเว็บไซต์อย่างต่อเนื่อง โดยให้ความสำคัญกับ UX/UI
                   การสร้างประสบการณ์ที่ดีให้ผู้ใช้ และการเขียนโค้ดที่เป็นระเบียบเรียบร้อยเพื่อประสิทธิภาพสูงสุด
                 </p>
               </div>
@@ -38,14 +38,14 @@ export default function Home() {
                 >
                   ผลงาน
                 </a>
-                
+
                 {/* ปุ่มดาวน์โหลด CV */}
                 <a
                   href="/resume-songpol.pdf"
                   download
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 text-base font-semibold rounded-xl text-slate-300 bg-slate-900/80 hover:bg-slate-900 hover:text-white transition-all duration-200 hover:-translate-y-0.5"
                 >
-                  ดาวน์โหลด CV ⏬
+                  Resume 
                 </a>
 
                 <a
@@ -57,11 +57,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* ฝั่งขวา: รูปภาพกรอบโปรไฟล์แบบวงกลมเรืองแสง */}
+            {/* ฝั่งขวา: รูปภาพกรอบโปรไฟล์ (ปรับเป็นขอบสี Slate เรียบหรูแทนสีรุ้ง) */}
             <div className="flex-shrink-0 relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-emerald-500 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-300 animate-pulse" />
-
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-indigo-500 via-purple-500 to-emerald-500 shadow-2xl">
+              {/* ลบเงาเรืองแสงสีรุ้งด้านหลังออกเพื่อให้ดูเรียบง่ายขึ้น */}
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-slate-800 shadow-2xl transition-colors duration-300 group-hover:bg-indigo-500/50">
                 <div className="w-full h-full bg-slate-950 rounded-full overflow-hidden border-2 border-slate-950">
                   <img
                     src="/team.jpg"
@@ -83,19 +82,43 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-3xl transition-all group-hover:bg-indigo-500/10" />
           <div className="mb-6">
             <p className="text-xs uppercase tracking-widest font-bold text-indigo-400 mb-2">เกี่ยวกับฉัน</p>
-                       
+
           </div>
           <div className="text-slate-400 text-lg leading-relaxed space-y-4">
             <p>
-              สวัสดีครับผม <span className="text-white font-semibold">"ทีม"</span> ครับ 
-              ผมเป็นคนที่มีความหลงใหลในการผสมผสานระหว่างโลกของศิลปะ (<span className="text-indigo-400 font-medium">Design</span>) 
-              และโลกของตรรกะ (<span className="text-emerald-400 font-medium">Development</span>) เข้าด้วยกัน
+              สวัสดีครับชื่อ <span className="text-white font-semibold">"ทีม"</span> ครับ
+              ผมเป็นคนที่มีชื่นชอบในผลงานของศิลปะ (<span className="text-indigo-400 font-medium">Design</span>)
+              และโลกของตรรกะ (<span className="text-emerald-400 font-medium">Development</span>) 
             </p>
             <p>
-              เป้าหมายของผมคือการสร้างสรรค์หน้าตาเว็บไซต์ที่ไม่ใช่แค่สวยงามสะดุดตา แต่ต้องมอบประสบการณ์การใช้งานที่ลื่นไหล 
-              และตอบโจทย์ผู้ใช้งานจริง ๆ ปัจจุบันผมกำลังมุ่งมั่นพัฒนาทักษะในสาย <span className="text-purple-400 font-medium">Frontend Developer</span> และ 
-              <span className="text-purple-400 font-medium"> UX/UI Designer</span> อย่างเข้มข้นเพื่อสร้างผลงานที่มีประสิทธิภาพสูงสุดครับ
+              เป้าหมายของผมคือการสร้างสรรค์หน้าตาเว็บไซต์ที่สวยงามสะดุดตา แต่ต้องมอบประสบการณ์การใช้งานที่ดี
+              และตอบโจทย์ผู้ใช้งานจริง ๆ ปัจจุบันผมกำลังมุ่งมั่นพัฒนาทักษะในสาย <span className="text-purple-400 font-medium">Frontend Developer</span> และ
+              <span className="text-purple-400 font-medium"> UX/UI Designer</span> เพื่อสร้างผลงานที่มีประสิทธิภาพสูงสุดครับ
             </p>
+          </div>
+        </section>
+
+        <section className="space-y-8">
+          <div className="mb-6 text-center md:text-left">
+            <p className="text-xs uppercase tracking-widest font-bold text-purple-400 mb-2">การศึกษา</p>
+            <h2 className="text-3xl font-bold text-white tracking-tight">Education</h2>
+          </div>
+
+
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-2">มหาวิทยาลัยราชภัฏพระนคร</h3>
+              <p className="text-sm text-slate-400">คณะวิทยาศาสตร์และเทคโนโลยี สาขาวิทยาการคอมพิวเตอร์</p>
+              <p className="text-sm text-slate-400">ปีการศึกษา 2566 - ปัจจุบัน</p>
+            </div>
+
+            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-2">โรงเรียนดอนเมืองทหารอากาศบำรุง</h3>
+              <p className="text-sm text-slate-400">มัธยมศึกษาตอนปลาย สายศิลป์ภาษาจีน</p>
+              <p className="text-sm text-slate-400">ปีการศึกษา 2563 - 2565 (จบการศึกษา)</p>
+
+            </div>
           </div>
         </section>
 
@@ -159,7 +182,7 @@ export default function Home() {
               <div className="w-full h-40 bg-slate-950 flex items-center justify-center border-b border-slate-900 text-slate-600 font-mono text-sm relative group-hover:text-slate-400 transition-colors">
                 <span>[ cyber-lab screenshot ]</span>
               </div>
-              
+
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors duration-300">
@@ -168,9 +191,9 @@ export default function Home() {
                   <p className="mt-3 text-sm text-slate-400 leading-relaxed">
                     Cyberlab Load Test | Web Application Load Testing and Rate Limiting Protection เป็นส่วนนึงของงานวิชา Cybersecurity
                   </p>
-                  
+
                   <div className="mt-4 pt-3 border-t border-slate-950 flex items-center gap-1.5 text-xs">
-                    
+
                   </div>
                 </div>
 
@@ -190,23 +213,23 @@ export default function Home() {
               </div>
             </article>
 
-            {/* การ์ดผลงานที่ 2 (UX/UI for an image website) - แก้ไขจุดที่บั๊กเรียบร้อยแล้ว */}
+            {/* การ์ดผลงานที่ 2 (UX/UI for an image website) */}
             <article className="group bg-slate-900/40 rounded-2xl border border-slate-900 shadow-md hover:shadow-xl hover:border-emerald-500/30 hover:bg-slate-900/80 transition-all duration-300 flex flex-col overflow-hidden">
               <div className="w-full h-40 bg-slate-950 flex items-center justify-center border-b border-slate-900 text-slate-600 font-mono text-sm relative group-hover:text-slate-400 transition-colors">
                 <span>[ UI/UX Design preview ]</span>
               </div>
-              
+
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
                     UX/UI for an image website
                   </h3>
                   <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                    โปรเจกต์การออกแบบและวางโครงสร้างหน้าจอผู้ใช้งานสำหรับเว็บไซต์คลังรูปภาพ เน้นความลื่นไหลและสวยงาม
+                    โปรเจกต์การออกแบบและวางโครงสร้างสำหรับเว็บไซต์คลังรูปภาพ
                   </p>
-                  
+
                   <div className="mt-4 pt-3 border-t border-slate-950 flex items-center gap-1.5 text-xs">
-                    
+
                   </div>
                 </div>
 
@@ -226,24 +249,24 @@ export default function Home() {
               </div>
             </article>
 
-            {/* การ์ดผลงานที่ 3 (Portfolio ตัวเอง) */}
+            {/* การ์ดผลงานที่ 3 (Portfolio ) */}
             <article className="group bg-slate-900/40 rounded-2xl border border-slate-900 shadow-md hover:shadow-xl hover:border-purple-500/30 hover:bg-slate-900/80 transition-all duration-300 flex flex-col overflow-hidden">
               <div className="w-full h-40 bg-slate-950 flex items-center justify-center border-b border-slate-900 text-slate-600 font-mono text-sm relative group-hover:text-slate-400 transition-colors">
                 <span>[ Portfolio preview ]</span>
               </div>
-              
+
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
-                    Portfolio ตัวเอง
+                    Portfolio
                   </h3>
                   <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                    สร้างหน้า Portfolio ส่วนตัวด้วย Next.js และจัดสไตล์อย่างงดงามด้วย Tailwind CSS เพื่อแสดงตัวตน
+                    สร้างหน้า Portfolio ส่วนตัวด้วย Next.js และจัด Tailwind CSS
                   </p>
-                  
+
                   <div className="mt-4 pt-3 border-t border-slate-950 flex items-center gap-1.5 text-xs">
-                    
-                    
+
+
                   </div>
                 </div>
 
@@ -253,8 +276,8 @@ export default function Home() {
                   </span>
                   <a
                     href="https://github.com/songpolteam005/my-portfolio-songpol"
-                  target= "_balnk"
-                  rel="noreferrer"
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-purple-500 hover:text-white transition-all duration-200 shadow-sm"
                   >
                     Portfolio 🔗
@@ -273,7 +296,7 @@ export default function Home() {
             <p className="text-xs uppercase tracking-widest font-bold text-indigo-400 mb-2">ติดต่อ</p>
             <h2 className="text-3xl font-bold text-white tracking-tight">Contact</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <a
               href="mailto:songpolteam005@gmail.com"
@@ -285,7 +308,7 @@ export default function Home() {
                 <p className="text-sm font-semibold text-slate-200">songpolteam005@gmail.com</p>
               </div>
             </a>
-            
+
             <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-900">
               <span className="text-2xl bg-emerald-500/10 p-2.5 rounded-xl text-emerald-400">💬</span>
               <div>
@@ -295,8 +318,9 @@ export default function Home() {
             </div>
           </div>
 
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            <a 
+            <a
               href="https://github.com/songpolteam005"
               target="_blank"
               rel="noreferrer"
@@ -304,11 +328,21 @@ export default function Home() {
             >
               <span className="text-2xl bg-slate-800 p-2.5 rounded-xl text-slate-400 group-hover:scale-110 transition-transform group-hover:text-white">🐈‍⬛</span>
               <div>
-                <p className="text-xs text-slate-500 font-medium">ดูโค้ดบน</p>
+                <p className="text-xs text-slate-500 font-medium">ดูโค้ด</p>
                 <p className="text-sm font-semibold text-slate-200 group-hover:text-white">GitHub Profile</p>
               </div>
             </a>
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-900">
+              <span className="text-2xl bg-emerald-500/10 p-2.5 rounded-xl text-emerald-400">📘</span>
+              <div>
+                <p className="text-xs text-slate-500 font-medium"> Facebook</p>
+                <p className="text-sm font-semibold text-slate-200">Songpol Pomnuch </p>
+              </div>
+            </div>
           </div>
+
+
+          
         </section>
 
       </main>
