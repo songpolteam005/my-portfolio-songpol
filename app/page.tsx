@@ -1,358 +1,276 @@
-import React from 'react';
+'use client'; // เพิ่มเพื่อให้ React useState ทำงานได้ใน Next.js App Router
+
+import React, { useState } from 'react';
 
 export default function Home() {
+  // สถานะสำหรับสลับ Tab (ค่าเริ่มต้นเป็น 'projects')
+const [activeTab, setActiveTab] = useState<'projects' | 'skills' | 'education' | 'work-skills'>('projects');
+
   return (
-    // เปลี่ยนเป็นโทนสีดาร์กหรู ๆ เท่ ๆ (Slate-950) และจัดฟอนต์ให้อ่านง่าย
-    <div className="min-h-screen bg-slate-950 text-slate-100 antialiased font-sans selection:bg-indigo-500 selection:text-white">
+    // เลื่อนทีละหน้า + ลายตาราง Grid เทาอ่อนบนพื้นขาว
+    <div className="h-screen w-full overflow-y-scroll snap-y snap-mandatory bg-[#fafafa] text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-900">
 
-      {/* 1. HERO SECTION - เติมลูกเล่นแสงไฟส่อง (Glow Effect) ด้านหลัง และเพิ่มรูปโปรไฟล์ด้านขวา */}
-      <header className="relative overflow-hidden bg-slate-900/40 border-b border-slate-900 py-20 md:py-32">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute top-12 left-1/3 w-[300px] h-[300px] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none" />
+      {/* ================= (หน้าที่ 1) ================= */}
+      <section className="h-screen w-full snap-start relative flex items-center justify-center px-6 overflow-hidden bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px]">
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+        {/* Glow Effects */}
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-indigo-100/60 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-teal-100/50 blur-[140px] rounded-full pointer-events-none" />
 
-            {/* ฝั่งซ้าย: ข้อความและปุ่มแอคชัน */}
-            <div className="text-center md:text-left flex-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-medium text-slate-400 mb-6 shadow-inner">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Portfolio
-              </div>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-teal-200">ทรงพล พุ่มนุช</span>
-              </h1>
+        <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
 
-              <div className="mt-6 space-y-3">
-                <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">UX/UI Designer & Frontend Developer</h2>
-                <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
-                  กำลังศึกษาและพัฒนาเว็บไซต์อย่างต่อเนื่อง โดยให้ความสำคัญกับ UX/UI
-                  การสร้างประสบการณ์ที่ดีให้ผู้ใช้ และการเขียนโค้ดที่เป็นระเบียบเรียบร้อยเพื่อประสิทธิภาพสูงสุด
-                </p>
-              </div>
-
-              <div className="mt-10 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-xl text-slate-950 bg-gradient-to-r from-indigo-400 to-emerald-400 hover:opacity-90 shadow-lg shadow-indigo-500/10 transition-all duration-200 hover:-translate-y-0.5"
-                >
-                  ผลงาน
-                </a>
-
-                {/* ปุ่มดาวน์โหลด CV */}
-                <a
-                  href="/resume-songpol.pdf"
-                  download
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 text-base font-semibold rounded-xl text-slate-300 bg-slate-900/80 hover:bg-slate-900 hover:text-white transition-all duration-200 hover:-translate-y-0.5"
-                >
-                  Resume 
-                </a>
-
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-slate-800 text-base font-semibold rounded-xl text-slate-300 bg-slate-900/80 hover:bg-slate-900 hover:text-white transition-all duration-200 hover:-translate-y-0.5"
-                >
-                  ติดต่อฉัน
-                </a>
-              </div>
+          {/* ข้อความ*/}
+          <div className="md:col-span-7 text-center md:text-left space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-medium text-slate-600 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Welcome to My Portfolio
             </div>
 
-            {/* ฝั่งขวา: รูปภาพกรอบโปรไฟล์ (ปรับเป็นขอบสี Slate เรียบหรูแทนสีรุ้ง) */}
-            <div className="flex-shrink-0 relative group">
-              {/* ลบเงาเรืองแสงสีรุ้งด้านหลังออกเพื่อให้ดูเรียบง่ายขึ้น */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-slate-800 shadow-2xl transition-colors duration-300 group-hover:bg-indigo-500/50">
-                <div className="w-full h-full bg-slate-950 rounded-full overflow-hidden border-2 border-slate-950">
+            <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              ทรงพล พุ่มนุช
+            </h1>
+            <p className="text-xl sm:text-2xl text-slate-600 font-bold tracking-wide">
+              Songpol Phumunuch
+            </p>
+            <p className="text-2xl sm:text-3xl font-bold text-indigo-600">
+              Frontend Developer & Backend Developer
+            </p>
+
+            <p className="text-slate-600 text-lg sm:text-xl max-w-xl leading-relaxed">
+              สวัสดีครับชื่อ <span className="text-slate-900 font-semibold">"ทีม"</span> กำลังศึกษาอยู่ที่มหาวิทยาลัยราชภัฏพระนคร สาขาวิทยาการคอมพิวเตอร์ และกำลังศึกษาพัฒนาทักษะด้านการพัฒนาเว็บไซต์และแอปพลิเคชัน ในด้าน
+              <span className=" text-slate-900 font-bold">"Frontend และ Backend Development"</span>
+              โดยใช้เทคโนโลยีสมัยใหม่ในการสร้างเว็บแอปพลิเคชันสมัยใหม่และพร้อมที่จะเรียนรู้เพิ่มขึ้นอีก
+            </p>
+
+
+            {/* ปุ่มกด */}
+            <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-4">
+              <a
+                href="#showcase"
+                className="px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-slate-800 transition-all shadow-md hover:-translate-y-0.5 flex items-center gap-2"
+              >
+                <span>👁️</span> View Portfolio
+              </a>
+              <a
+                href="#contact"
+                className="px-6 py-3.5 rounded-xl font-bold text-sm text-slate-700 bg-white border border-slate-200/80 hover:bg-slate-50 transition-all shadow-sm hover:-translate-y-0.5 flex items-center gap-2"
+              >
+                <span>🚀</span> Contact Me
+              </a>
+            </div>
+          </div>
+
+          {/* ฝั่งขวา: รูปโปรไฟล์ */}
+          <div className="md:col-span-5 flex justify-center">
+            <div className="relative group">
+              <div className="w-56 h-56 sm:w-64 sm:h-64 rounded-full p-2 bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-transform duration-500 group-hover:scale-105">
+                <div className="w-full h-full rounded-full overflow-hidden bg-slate-100">
                   <img
                     src="/team.jpg"
                     alt="ทรงพล พุ่มนุช"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
-
           </div>
+
         </div>
-      </header>
 
-      <main className="max-w-4xl mx-auto px-6 py-20 space-y-28">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-slate-400 animate-bounce text-xs font-mono">
+          SCROLL DOWN ↓
+        </div>
+      </section>
 
-        {/* 2. ABOUT SECTION */}
-        <section className="bg-gradient-to-b from-slate-900/60 to-slate-900/20 p-8 md:p-12 rounded-3xl border border-slate-900 shadow-xl backdrop-blur-sm relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-3xl transition-all group-hover:bg-indigo-500/10" />
-          <div className="mb-6">
-            <p className="text-xs uppercase tracking-widest font-bold text-indigo-400 mb-2">เกี่ยวกับฉัน</p>
+      {/* (รวม Projects + Skills + Education + work skills)  */}
+      <section id="showcase" className="h-screen w-full snap-start relative flex items-center justify-center px-6 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px]">
+        <div className="max-w-5xl w-full mx-auto space-y-8">
 
-          </div>
-          <div className="text-slate-400 text-lg leading-relaxed space-y-4">
-            <p>
-              สวัสดีครับชื่อ <span className="text-white font-semibold">"ทีม"</span> ครับ
-              ผมเป็นคนที่มีชื่นชอบในผลงานของศิลปะ (<span className="text-indigo-400 font-medium">Design</span>)
-              และโลกของตรรกะ (<span className="text-emerald-400 font-medium">Development</span>) 
-            </p>
-            <p>
-              เป้าหมายของผมคือการสร้างสรรค์หน้าตาเว็บไซต์ที่สวยงามสะดุดตา แต่ต้องมอบประสบการณ์การใช้งานที่ดี
-              และตอบโจทย์ผู้ใช้งานจริง ๆ ปัจจุบันผมกำลังมุ่งมั่นพัฒนาทักษะในสาย <span className="text-purple-400 font-medium">Frontend Developer</span> และ
-              <span className="text-purple-400 font-medium"> UX/UI Designer</span> เพื่อสร้างผลงานที่มีประสิทธิภาพสูงสุดครับ
-            </p>
-          </div>
-        </section>
+          {/* Header & Title */}
+          <div className="text-center space-y-2">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Portfolio Showcase</h2>
+            <p className="text-slate-500 text-sm sm:text-base">Explore my projects, work skills,skills and Education</p>
 
-        <section className="space-y-8">
-          <div className="mb-6 text-center md:text-left">
-            <p className="text-xs uppercase tracking-widest font-bold text-purple-400 mb-2">การศึกษา</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight">Education</h2>
-          </div>
+            {/* ปุ่ม Tab Switcher แบบเดียวกับในรูปตัวอย่าง */}
+            <div className="pt-4 flex justify-center gap-3">
+              <button
+                onClick={() => setActiveTab('projects')}
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'projects'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                  }`}
+              >
+                <span>💻</span> Projects(โปรเจกต์)
+              </button>
 
+             <button
+                onClick={() => setActiveTab('work-skills')}
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'work-skills'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                  }`}
+              >
+                <span>💼</span> Work Skills(ทักษะการทำงาน)
+              </button>
+                
+           
 
+              <button
+                onClick={() => setActiveTab('skills')}
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'skills'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                  }`}
+              >
+                <span>⚡</span> Skills(ทักษะ)
+              </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
-              <h3 className="text-xl font-bold text-white mb-2">มหาวิทยาลัยราชภัฏพระนคร</h3>
-              <p className="text-sm text-slate-400">คณะวิทยาศาสตร์และเทคโนโลยี สาขาวิทยาการคอมพิวเตอร์</p>
-              <p className="text-sm text-slate-400">ปีการศึกษา 2566 - ปัจจุบัน</p>
-            </div>
-
-            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
-              <h3 className="text-xl font-bold text-white mb-2">โรงเรียนดอนเมืองทหารอากาศบำรุง</h3>
-              <p className="text-sm text-slate-400">มัธยมศึกษาตอนปลาย สายศิลป์ภาษาจีน</p>
-              <p className="text-sm text-slate-400">ปีการศึกษา 2563 - 2565 (จบการศึกษา)</p>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 2.5 TECH STACK SECTION */}
-        <section className="space-y-8">
-          <div className="mb-6 text-center md:text-left">
-            <p className="text-xs uppercase tracking-widest font-bold text-purple-400 mb-2">ทักษะความสามารถ</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight">Tech Stack</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* FRONTEND CARD */}
-            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
-              <h3 className="text-sm uppercase tracking-wider font-bold text-orange-400 mb-4">Frontend</h3>
-              <div className="flex flex-wrap gap-2">
-                {['HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js'].map((tech) => (
-                  <span key={tech} className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-950/80 text-slate-300 border border-slate-800">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* DATABASE CARD */}
-            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
-              <h3 className="text-sm uppercase tracking-wider font-bold text-orange-400 mb-4">Database</h3>
-              <div className="flex flex-wrap gap-2">
-                {['MySQL'].map((tech) => (
-                  <span key={tech} className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-950/80 text-slate-300 border border-slate-800">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* TOOLS & DESIGN CARD */}
-            <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-900/80 shadow-md hover:border-indigo-500/20 transition-all backdrop-blur-sm">
-              <h3 className="text-sm uppercase tracking-wider font-bold text-orange-400 mb-4">Tools & Design</h3>
-              <div className="flex flex-wrap gap-2">
-                {['Clerk', 'Figma', 'GitHub', 'VS Code', 'XAMPP', 'Vercel'].map((tech) => (
-                  <span key={tech} className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-950/80 text-slate-300 border border-slate-800">
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              <button
+                onClick={() => setActiveTab('education')}
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'education'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                  }`}
+              >
+                <span>🎓</span> Education(ประวัติการศึกษา)
+              </button>
             </div>
           </div>
-        </section>
 
-        {/* 3. PROJECTS SECTION */}
-        <section id="projects" className="scroll-mt-16">
-          <div className="mb-10 text-center md:text-left">
-            <p className="text-xs uppercase tracking-widest font-bold text-emerald-400 mb-2">ผลงาน</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight">โปรเจกต์ที่เคยทำ</h2>
-          </div>
+          {/* TAB CONTENT 1: PROJECTS */}
+          {activeTab === 'projects' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fadeIn">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            {/* การ์ดผลงานที่ 1 (cyber-lab-load-testing) */}
-            <article className="group bg-slate-900/40 rounded-2xl border border-slate-900 shadow-md hover:shadow-xl hover:border-indigo-500/30 hover:bg-slate-900/80 transition-all duration-300 flex flex-col overflow-hidden">
-              <div className="w-full h-40 bg-slate-950 flex items-center justify-center border-b border-slate-900 text-slate-600 font-mono text-sm relative group-hover:text-slate-400 transition-colors">
-                <span>[ cyber-lab screenshot ]</span>
-              </div>
-
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors duration-300">
+              {/* Project 1 */}
+              <div className="bg-blue-50 rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between group hover:border-indigo-300 transition-all shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)]">
+                <div className="h-36 bg-slate-100 flex items-center justify-center border-b border-slate-200/80 text-xs font-mono text-slate-400">
+                  <span>[ cyber-lab preview ]</span>
+                </div>
+                <div className="p-5 space-y-3">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                     cyber-lab-load-testing
                   </h3>
-                  <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                    Cyberlab Load Test | Web Application Load Testing and Rate Limiting Protection เป็นส่วนนึงของงานวิชา Cybersecurity
+                  <p className="text-l text-slate-600 leading-relaxed">
+                    Web Application Load Testing and Rate Limiting Protection
                   </p>
-
-                  <div className="mt-4 pt-3 border-t border-slate-950 flex items-center gap-1.5 text-xs">
-
-                  </div>
-                </div>
-
-                <div className="mt-6 flex justify-between items-center">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                    Cybersecurity
-                  </span>
-                  <a
-                    href="https://github.com/songpolteam005/cyber-lab-load-testing"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-200 hover:bg-indigo-500 hover:text-white transition-all duration-200 shadow-sm"
-                  >
-                    Code 🔗
-                  </a>
+                  <a href="https://github.com/songpolteam005/cyber-lab-load-testing" target="_blank" rel="noreferrer" className="inline-block text-xs font-bold text-indigo-600">View Code 🔗</a>
                 </div>
               </div>
-            </article>
 
-            {/* การ์ดผลงานที่ 2 (UX/UI for an image website) */}
-            <article className="group bg-slate-900/40 rounded-2xl border border-slate-900 shadow-md hover:shadow-xl hover:border-emerald-500/30 hover:bg-slate-900/80 transition-all duration-300 flex flex-col overflow-hidden">
-              <div className="w-full h-40 bg-slate-950 flex items-center justify-center border-b border-slate-900 text-slate-600 font-mono text-sm relative group-hover:text-slate-400 transition-colors">
-                <span>[ UI/UX Design preview ]</span>
-              </div>
-
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
-                    UX/UI for an image website
+              {/* Project 2 */}
+              <div className="bg-green-50 rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between group hover:border-teal-300 transition-all shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)]">
+                <div className="h-36 bg-slate-100 flex items-center justify-center border-b border-slate-200/80 text-xs font-mono text-slate-400">
+                  <span>[ UX/UI preview ]</span>
+                </div>
+                <div className="p-5 space-y-3">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                    UX/UI for image website
                   </h3>
-                  <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                    โปรเจกต์การออกแบบและวางโครงสร้างสำหรับเว็บไซต์คลังรูปภาพ
+                  <p className="text-l text-slate-600 leading-relaxed">
+                    โปรเจกต์การออกแบบที่กำลังพัฒนา UX/UI แสดงผลงานรูปภาพ
                   </p>
-
-                  <div className="mt-4 pt-3 border-t border-slate-950 flex items-center gap-1.5 text-xs">
-
-                  </div>
-                </div>
-
-                <div className="mt-6 flex justify-between items-center">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    UX/UI Design
-                  </span>
-                  <a
-                    href="https://github.com/songpolteam005/test_App"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-200 hover:bg-emerald-500 hover:text-slate-950 transition-all duration-200 shadow-sm"
-                  >
-                    Design 🔗
-                  </a>
+                  <a href="https://github.com/songpolteam005/test_App" target="_blank" rel="noreferrer" className="inline-block text-xs font-bold text-teal-600">View Design 🔗</a>
                 </div>
               </div>
-            </article>
 
-            {/* การ์ดผลงานที่ 3 (Portfolio ) */}
-            <article className="group bg-slate-900/40 rounded-2xl border border-slate-900 shadow-md hover:shadow-xl hover:border-purple-500/30 hover:bg-slate-900/80 transition-all duration-300 flex flex-col overflow-hidden">
-              <div className="w-full h-40 bg-slate-950 flex items-center justify-center border-b border-slate-900 text-slate-600 font-mono text-sm relative group-hover:text-slate-400 transition-colors">
-                <span>[ Portfolio preview ]</span>
-              </div>
-
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
-                    Portfolio
+              {/* Project 3 */}
+              <div className="bg-purple-50 rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between group hover:border-purple-300 transition-all shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)]">
+                <div className="h-36 bg-slate-100 flex items-center justify-center border-b border-slate-200/80 text-xs font-mono text-slate-400">
+                  <span>[ Portfolio preview ]</span>
+                </div>
+                <div className="p-5 space-y-3">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                    Personal Portfolio
                   </h3>
-                  <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                    สร้างหน้า Portfolio ส่วนตัวด้วย Next.js และจัด Tailwind CSS
+                  <p className="text-l text-slate-600 leading-relaxed">
+                    สร้างหน้า Portfolio ส่วนตัวด้วย Next.js และ Tailwind CSS
                   </p>
-
-                  <div className="mt-4 pt-3 border-t border-slate-950 flex items-center gap-1.5 text-xs">
-
-
-                  </div>
-                </div>
-
-                <div className="mt-6 flex justify-between items-center">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                    Next.js Web
-                  </span>
-                  <a
-                    href="https://github.com/songpolteam005/my-portfolio-songpol"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-purple-500 hover:text-white transition-all duration-200 shadow-sm"
-                  >
-                    Portfolio 🔗
-                  </a>
+                  <a href="https://github.com/songpolteam005/my-portfolio-songpol" target="_blank" rel="noreferrer" className="inline-block text-xs font-bold text-purple-600">View Code 🔗</a>
                 </div>
               </div>
-            </article>
 
-          </div>
-        </section>
+            </div>
 
-        {/* 4. CONTACT SECTION */}
-        <section id="contact" className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 p-8 md:p-12 rounded-3xl border border-indigo-500/10 shadow-2xl scroll-mt-16">
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full" />
-          <div className="mb-8">
-            <p className="text-xs uppercase tracking-widest font-bold text-indigo-400 mb-2">ติดต่อ</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight">Contact</h2>
-          </div>
+          )}
+       
+{/*  Work SKILLS */}
+          {activeTab === 'work-skills' && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 animate-fadeIn">
+              {['มีการทำงานเป็นทีม', 'มีความรับผิดชอบ','ปรับตัวเข้ากับตนอื่นได้', 'มีความคิดสร้างสรรค์', 'สื่อสาร', 'แก้ปัญหา'].map((skill) => (
+                <div key={skill} className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)] text-center space-y-2 hover:border-indigo-300 transition-all">
+                  <p className="text-sm font-bold text-slate-800">{skill}</p>
+                </div>
+              ))}
+            </div>
+          )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <a
-              href="mailto:songpolteam005@gmail.com"
-              className="flex items-center gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-900 hover:border-slate-800 hover:bg-slate-950 transition-all group"
-            >
-              <span className="text-2xl bg-indigo-500/10 p-2.5 rounded-xl text-indigo-400 group-hover:scale-110 transition-transform">📧</span>
-              <div>
-                <p className="text-xs text-slate-500 font-medium">ส่งอีเมล</p>
-                <p className="text-sm font-semibold text-slate-200">songpolteam005@gmail.com</p>
+          {/*  SKILLS */}
+          {activeTab === 'skills' && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 animate-fadeIn">
+              {['HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'TypeScript', 'Next.js', 'Vue.js', 'Figma', 'GitHub', 'VS Code', 'Vercel'].map((skill) => (
+                <div key={skill} className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)] text-center space-y-2 hover:border-indigo-300 transition-all">
+                  <p className="text-sm font-bold text-slate-800">{skill}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* EDUCATION */}
+          {activeTab === 'education' && (
+            <div className="max-w-2xl mx-auto space-y-4 animate-fadeIn">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+                <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">2566 - ปัจจุบัน</span>
+                <h3 className="text-xl font-bold text-slate-900">มหาวิทยาลัยราชภัฏพระนคร</h3>
+                <p className="text-sm text-slate-600">คณะวิทยาศาสตร์และเทคโนโลยี สาขาวิทยาการคอมพิวเตอร์</p>
               </div>
-            </a>
 
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-900">
-              <span className="text-2xl bg-emerald-500/10 p-2.5 rounded-xl text-emerald-400">💬</span>
-              <div>
-                <p className="text-xs text-slate-500 font-medium"> Line</p>
-                <p className="text-sm font-semibold text-slate-200">@tamsoso</p>
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">2564 - 2566</span>
+                <h3 className="text-xl font-bold text-slate-900">โรงเรียนดอนเมืองทหารอากาศบำรุง</h3>
+                <p className="text-sm text-slate-600">มัธยมศึกษาตอนปลาย สายศิลป์ภาษาจีน (จบการศึกษา)</p>
               </div>
             </div>
-          </div>
+          )}
 
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            <a
-              href="https://github.com/songpolteam005"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-900 hover:border-slate-800 hover:bg-slate-950 transition-all group"
-            >
-              <span className="text-2xl bg-slate-800 p-2.5 rounded-xl text-slate-400 group-hover:scale-110 transition-transform group-hover:text-white">🐈‍⬛</span>
-              <div>
-                <p className="text-xs text-slate-500 font-medium">ดูโค้ด</p>
-                <p className="text-sm font-semibold text-slate-200 group-hover:text-white">GitHub Profile</p>
-              </div>
-            </a>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-900">
-              <span className="text-2xl bg-emerald-500/10 p-2.5 rounded-xl text-emerald-400">📘</span>
-              <div>
-                <p className="text-xs text-slate-500 font-medium"> Facebook</p>
-                <p className="text-sm font-semibold text-slate-200">Songpol Pomnuch </p>
-              </div>
-            </div>
-          </div>
-
-
-          
-        </section>
-
-      </main>
-
-      {/* FOOTER */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-10">
-        <div className="max-w-4xl mx-auto px-6 text-center text-xs text-slate-600">
-          <p>© {new Date().getFullYear()} My Portfolio. All rights reserved.</p>
         </div>
-      </footer>
+      </section>
+
+      {/* ================= (หน้าที่ 3) ================= */}
+      <section id="contact" className="h-screen w-full snap-start relative flex items-center justify-center px-6 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px]">
+        <div className="max-w-3xl w-full mx-auto space-y-8 text-center">
+
+          <div>
+            <p className="text-4xl font-bold tracking-widest text-indigo-600 uppercase">Contact Me</p>
+            <h2 className="text-5xl font-extrabold text-slate-900 mt-1">Get In Touch</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+            <a href="mailto:songpolteam005@gmail.com" className="p-5 rounded-xl bg-white border border-slate-200/80 hover:border-indigo-300 transition-all shadow-sm">
+              <p className="text-xl text-slate-400 font-mono">EMAIL</p>
+              <p className="text-l font-bold text-slate-800 mt-1">songpolteam005@gmail.com</p>
+            </a>
+
+            <div className="p-5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+              <p className="text-xl text-slate-400 font-mono">LINE</p>
+              <p className="text-l font-bold text-slate-800 mt-1">@tamsoso</p>
+            </div>
+
+            <a href="https://github.com/songpolteam005" target="_blank" rel="noreferrer" className="p-5 rounded-xl bg-white border border-slate-200/80 hover:border-indigo-300 transition-all shadow-sm">
+              <p className="text-xl text-slate-400 font-mono">GITHUB</p>
+              <p className="text-l font-bold text-slate-800 mt-1">songpolteam005</p>
+            </a>
+
+            <div className="p-5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+              <p className="text-xl text-slate-400 font-mono">FACEBOOK</p>
+              <p className="text-l font-bold text-slate-800 mt-1">Songpol Pomnuch</p>
+            </div>
+          </div>
+
+          <p className="text-xs text-slate-500 pt-8">© {new Date().getFullYear()} Songpol Pomnuch. All rights reserved.</p>
+
+        </div>
+      </section>
+
     </div>
   );
 }
