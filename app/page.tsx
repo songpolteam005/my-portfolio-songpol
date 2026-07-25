@@ -260,10 +260,10 @@ const [activeTab, setActiveTab] = useState<'projects' | 'skills' | 'education' |
               <p className="text-l font-bold text-slate-800 mt-1">songpolteam005</p>
             </a>
 
-            <div className="p-5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+            <a href="https://www.facebook.com/songpol.pomnuch.2024" target="_blank" rel="noreferrer" className="p-5 rounded-xl bg-white border border-slate-200/80 hover:border-indigo-300 transition-all shadow-sm">
               <p className="text-xl text-slate-400 font-mono">FACEBOOK</p>
               <p className="text-l font-bold text-slate-800 mt-1">Songpol Pomnuch</p>
-            </div>
+            </a>
           </div>
 
           <p className="text-xs text-slate-500 pt-8">© {new Date().getFullYear()} Songpol Pomnuch. All rights reserved.</p>
